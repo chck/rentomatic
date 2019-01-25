@@ -5,6 +5,7 @@ from unittest import mock
 
 from rentomatic.domain.storageroom import StorageRoom
 from rentomatic.use_cases import storageroom_use_case as uc
+from rentomatic.use_cases import request_objects as ro
 
 
 @pytest.fixture

@@ -49,7 +49,11 @@ def test_storageroom_list_without_parameters(domain_storagerooms):
     repo.list.return_value = domain_storagerooms
 
     storageroom_list_use_case = uc.StorageRoomListUseCase(repo)
-    result = storageroom_list_use_case.execute()
+    request_object = ro.StorageRoomListRequestObject.from_dict({})
 
+    response_object = storageroom_list_use_case.execute(request_object)
+
+    assert bool(response_object) is True
     repo.list.assert_called_with()
-    assert result == domain_storagerooms
+
+    assert response_object.value == domain_storagerooms

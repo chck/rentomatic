@@ -26,7 +26,7 @@ def test_response_failure_is_false(response_type, response_message):
     assert bool(res.ResponseFailure(response_type, response_message)) is False
 
 def test_response_success_contains_value(response_value):
-    response = res.ResponseSuccess(response_valu)
+    response = res.ResponseSuccess(response_value)
 
     assert response.value == response_value
 

@@ -7,7 +7,7 @@ class ResponseSuccess:
         return True
 
 
-class ResponseFailure(object):
+class ResponseFailure:
     RESOURCE_ERROR = 'ResourceError'
     PARAMETERS_ERROR = 'ParametersError'
     SYSTEM_ERROR = 'SystemError'
@@ -15,6 +15,9 @@ class ResponseFailure(object):
     def __init__(self, type_, message):
         self.type = type_
         self.message = self._format_message(message)
+
+    def __bool__(self):
+        return False
 
     @property
     def value(self):

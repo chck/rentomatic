@@ -8,19 +8,20 @@ from rentomatic.use_cases import request_objects as req
 def response_value():
     return {'key': ['value1', 'value2']}
 
-
 @pytest.fixture
 def response_type():
     return 'ResponseError'
-
 
 @pytest.fixture
 def response_message():
     return 'This is a response error'
 
+def test_valid_request_object_cannot_be_used():
+    with pytest.raises(NotImplementedError):
+        req.ValidRequestObject.from_dict({})
+
 def test_response_success_is_true(response_value):
     assert bool(res.ResponseSuccess(response_value)) is True
-
 
 def test_response_failure_is_false(response_type, response_message):
     assert bool(res.ResponseFailure(response_type, response_message)) is False
